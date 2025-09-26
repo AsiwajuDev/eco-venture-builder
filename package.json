@@ -3,11 +3,18 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "workspaces": [
+    "functions",
+    "src"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "pnpm --filter \".\" build && pnpm --filter \"./functions\" build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dev-all": "pnpm --recursive run dev",
+    "build-all": "pnpm --recursive run build",
+    "deploy-all": "pnpm --recursive run deploy"
   },
   "dependencies": {
     "firebase": "^12.3.0",
